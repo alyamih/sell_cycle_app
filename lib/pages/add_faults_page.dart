@@ -290,7 +290,7 @@ class _AddFaultsPageState extends State<AddFaultsPage> {
                       (element) => element.id == currentUnnecessaryItem.id);
                 }
                 unnecessaryItems.add(currentUnnecessaryItem);
-                addToSP();
+                addDataToSP();
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (_) => const HomePage()),
@@ -646,14 +646,14 @@ class _AddFaultsPageState extends State<AddFaultsPage> {
   }
 }
 
-Future<void> addToSP() async {
+Future<void> addDataToSP() async {
   final prefs = await SharedPreferences.getInstance();
   prefs.setString('recordedImages', jsonEncode(recordedImages));
   prefs.setString('unnecessaryItems', jsonEncode(unnecessaryItems));
   prefs.setString('faults', jsonEncode(faults));
 }
 
-void getSP(Function() callBack) async {
+void getDataFromSP(Function() callBack) async {
   final prefs = await SharedPreferences.getInstance();
   final List<dynamic> jsonData =
       jsonDecode(prefs.getString('recordedImages') ?? '[]');

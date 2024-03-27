@@ -229,7 +229,7 @@ class _DescriptionItemPageState extends State<DescriptionItemPage> {
             onTap: () {
               unnecessaryItems.removeWhere(
                   (element) => element.id == widget.currentItem.id);
-              addToSP();
+              addDataToSP();
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (_) => const HomePage()),
